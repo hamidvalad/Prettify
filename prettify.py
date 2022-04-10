@@ -1,20 +1,20 @@
 #With this program you can add or remove pretty comments to your code, have fun :)
 #You can use it in both command line (python3 prettify.py filename.py) or in any IDE
 #Even after editing your code you can re-run this program to re-organize your comments
-#Version=1.4.1
+#Version=1.4.2
 import sys, argparse                                                                                                                                                         #*|Importing libraries
-#--------------------------------------------------------Great idea by @amiralirj_pv, coded by Github.com/HamidValad---------------------------------------------------------#*|
+#--------------------------------------------------------"Pretty Commands", coded with love by Github.com/HamidValad---------------------------------------------------------#*|
 parser = argparse.ArgumentParser(description="With this program you can add or remove pretty comments to your code")                                                         #*|
 parser.add_argument('file', help='Add pretty comment to your code', type=str, default= '')                                                                                   #*|
 parser.add_argument('--type', '-t', help='Add pretty comment to your code pass 0 for removing comments', type= int, default= 1)                                              #*|Defining arguments and default values
 parser.add_argument('--number', '-n', help='Number of space after maximum length', type=int, default= 7)                                                                     #*|
 parser.add_argument('--symbol', '-s',  help='Pattern at end of line', type=str, default= chr(42))                                                                            #*|
-parser.add_argument('--credit', '-c', help='Add optional credit in empty lines', type=str, default='--Great idea by @amiralirj_pv, coded by Github.com/HamidValad--')        #*|
-#--------------------------------------------------------Great idea by @amiralirj_pv, coded by Github.com/HamidValad---------------------------------------------------------#*|
+parser.add_argument('--credit', '-c', help='Add optional credit in empty lines', type=str, default='--"Pretty Commands", coded with love by Github.com/HamidValad--')        #*|
+#--------------------------------------------------------"Pretty Commands", coded with love by Github.com/HamidValad---------------------------------------------------------#*|
 if len(sys.argv) < 2:                                                                                                                                                        #*|Check if any argument sent in command line
     filename = input('Enter your file name: \n')                                                                                                                             #*|Ask user to input file name if not sent as argument
     n = 7                                                                                                                                                                    #*|
-    Credit = '--Great idea by @amiralirj_pv, coded by Github.com/HamidValad--'                                                                                               #*|
+    Credit = '--"Pretty Commands", coded with love by Github.com/HamidValad--'                                                                                               #*|
     symbol = chr(35) + chr(42)                                                                                                                                               #*|
     Type = 1                                                                                                                                                                 #*|
 else:                                                                                                                                                                        #*|
@@ -32,11 +32,11 @@ try:                                                                            
 except:                                                                                                                                                                      #*|
     print('Wrong file name!')                                                                                                                                                #*|
     sys.exit()                                                                                                                                                               #*|In case of wrong file name exit the program
-#--------------------------------------------------------Great idea by @amiralirj_pv, coded by Github.com/HamidValad---------------------------------------------------------#*|
+#--------------------------------------------------------"Pretty Commands", coded with love by Github.com/HamidValad---------------------------------------------------------#*|
 l = len(Credit)                                                                                                                                                              #*|
 res = []                                                                                                                                                                     #*|
 maximum = max(max([len(chr(35).join(i.split(symbol)[:-1]).rstrip().strip('-')) if symbol in i else len(i) for i in lines]) , l+4) + n                                        #*|Check Maximun length of lines
-#--------------------------------------------------------Great idea by @amiralirj_pv, coded by Github.com/HamidValad---------------------------------------------------------#*|
+#--------------------------------------------------------"Pretty Commands", coded with love by Github.com/HamidValad---------------------------------------------------------#*|
 if Type:                                                                                                                                                                     #*|
     for line in lines:                                                                                                                                                       #*|
         comment = ''                                                                                                                                                         #*|
@@ -66,10 +66,10 @@ else:                                                                           
             res.append('\n')                                                                                                                                                 #*|
         else:                                                                                                                                                                #*|
             res.append(line)                                                                                                                                                 #*|
-#--------------------------------------------------------Great idea by @amiralirj_pv, coded by Github.com/HamidValad---------------------------------------------------------#*|
+#--------------------------------------------------------"Pretty Commands", coded with love by Github.com/HamidValad---------------------------------------------------------#*|
 result_name = 'Prety-{}'.format(filename)                                                                                                                                    #*|Generate result file name
 with open(result_name, 'w') as fout:                                                                                                                                         #*|
     for line in res:                                                                                                                                                         #*|
         fout.write(line)                                                                                                                                                     #*|
-#--------------------------------------------------------Great idea by @amiralirj_pv, coded by Github.com/HamidValad---------------------------------------------------------#*|
+#--------------------------------------------------------"Pretty Commands", coded with love by Github.com/HamidValad---------------------------------------------------------#*|
 print(f'Your pretty version is ready: {result_name}')                                                                                                                        #*|
